@@ -151,13 +151,16 @@
 		</section>
 	</footer>
 	<script>
-    generatePassword();
     chargeOptions(); 
+
+    generatePassword();
     function chargeOptions() {
         let checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
         checkboxes.forEach(checkbox => {
-            checkbox.checked = localStorage.getItem(`checkbox_${checkbox.getAttribute('id')}`) == 1; 
+            let checkboxValue = localStorage.getItem(`checkbox_${checkbox.getAttribute('id')}`);
+            if(checkboxValue != null)
+                checkbox.checked = checkboxValue == 1; 
         });
     }
 
